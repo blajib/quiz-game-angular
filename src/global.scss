@@ -24,3 +24,16 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.app-title{
+    text-align: center;
+    font-size: 2em;
+    color: white;
+    -webkit-text-stroke: 2px black;
+}
+
+body{
+    // background-color: #4dffae;
+    background: linear-gradient(to left, #4dffae,   #fcfe78  );
+}
+

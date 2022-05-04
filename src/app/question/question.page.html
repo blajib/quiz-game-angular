@@ -1,0 +1,20 @@
+<app-header></app-header>
+
+<ion-content class="ion-padding">
+<p>Bienvenue {{pseudo}}</p>
+<p>Question: {{compteurQuestion}}</p>
+<h3>{{question | titlecase}}</h3>
+
+<ion-radio-group [(ngModel)]="userAnswer">
+  <ion-item *ngFor="let response of responses">
+    <ion-label for="response">{{response}}</ion-label>
+    <ion-radio (click)="showNextQuestionResponse()" [value]="response"> {{response}}</ion-radio>
+  </ion-item>
+</ion-radio-group>
+
+
+<div *ngIf="showNextQuestion" class="bottom-button">
+  <button class="submit-button" (click)="nextQuestion()" color="#4dffae">Question suivante</button>
+</div>
+
+</ion-content>
