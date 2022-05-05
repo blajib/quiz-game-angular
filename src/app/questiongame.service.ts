@@ -76,7 +76,7 @@ export class QuestiongameService {
   getQuestionsApi2(difficulty, categoryChoice, nbrQuestions = 10) {
     console.log('hey pro', difficulty, categoryChoice);
     return this.http.get(
-      this.createUrl(difficulty, categoryChoice, (nbrQuestions = 10))
+      this.createUrl(difficulty, categoryChoice, nbrQuestions)
     );
   }
 
@@ -87,7 +87,7 @@ export class QuestiongameService {
       .catch((e) => console.log(e));
   }
 
-  createUrl(difficulty, categoryChoice, nbrQuestions = 10) {
+  createUrl(difficulty, categoryChoice, nbrQuestions) {
     return (
       'https://opentdb.com/api.php?amount=' +
       nbrQuestions +

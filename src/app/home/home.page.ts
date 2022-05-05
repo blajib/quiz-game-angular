@@ -1,10 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  SecureStorageObject,
-  SecureStorageOriginal,
-} from '@ionic-native/secure-storage';
+
 import { ToastController } from '@ionic/angular';
 import { QuestiongameService } from '../questiongame.service';
 
@@ -33,26 +30,12 @@ export class HomePage implements OnInit {
   errorMessagePseudo: string = 'Le pseudo doit faire au moins 3 chars';
   errorMessageDifficulty: string = 'Veuillez choisir un niveau de difficulté';
   errorMessageErrorCategorie: string = 'Veuillez choisir une catégorie';
-
-  //questions variables
-  allQuestions = [];
-  wholeQuestion: any = {};
-  responses = [];
-  badAnswers: string[] = [];
-  goodAnswer: string = '';
-  question: string = '';
-  compteurQuestion: number = 0;
-  userAnswer: string = '';
-  compteurGoodAnswers: number = 0;
-  nbrQuestions: number = 0;
-  overQuestions: any[];
-  river;
+  quantityQuestions;
 
   constructor(
     public toastController: ToastController,
     private questiongameService: QuestiongameService,
-    private router: Router,
-    private storage: Storage
+    private router: Router
   ) {
     this.getCategories();
   }

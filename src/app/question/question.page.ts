@@ -25,6 +25,7 @@ export class QuestionPage implements OnInit {
   categoryChoiced;
   nbrQuestions;
   pseudo;
+  quantityQuestions;
 
   constructor(
     private questiongameService: QuestiongameService,
@@ -40,12 +41,19 @@ export class QuestionPage implements OnInit {
     this.pseudo = this.activateRoute.snapshot.params.pseudo;
     this.difficultyChoiced = this.activateRoute.snapshot.params.difficulty;
     this.categoryChoiced = this.activateRoute.snapshot.params.category;
+    this.quantityQuestions =
+      this.activateRoute.snapshot.params.quantityQuestions;
     this.getFirstAndAllQuestionsApi();
   }
 
-  getFirstAndAllQuestionsApi(nbrQuestion = 10) {
+  getFirstAndAllQuestionsApi() {
+    console.log(this.quantityQuestions);
     this.questiongameService
-      .getQuestionsApi2(this.difficultyChoiced, this.categoryChoiced, 2)
+      .getQuestionsApi2(
+        this.difficultyChoiced,
+        this.categoryChoiced,
+        this.quantityQuestions
+      )
       .subscribe((result: any) => {
         this.allQuestions = result.results.sort((a, b) => 0.5 - Math.random());
         this.nbrQuestions = this.allQuestions.length;
