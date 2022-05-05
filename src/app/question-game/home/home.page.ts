@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
 
 import { ToastController } from '@ionic/angular';
-import { QuestiongameService } from '../questiongame.service';
-import { StorageService } from '../storage.service';
+import { QuestiongameService } from '../../questiongame.service';
+import { StorageService } from '../../storage.service';
 
 @Component({
   selector: 'app-home',

@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-      import('./home/home.module').then((m) => m.HomePageModule),
+      import('./question-game/home/home.module').then((m) => m.HomePageModule),
   },
   {
     path: '',
@@ -15,12 +15,12 @@ const routes: Routes = [
   {
     path: 'question/:pseudo/:difficulty/:category',
     loadChildren: () =>
-      import('./question/question.module').then((m) => m.QuestionPageModule),
+      import('./question-game/question/question.module').then((m) => m.QuestionPageModule),
   },
   {
     path: 'result/:compteurGoodAnswers/:nbrQuestions',
     loadChildren: () =>
-      import('./result/result.module').then((m) => m.ResultPageModule),
+      import('./question-game/result/result.module').then((m) => m.ResultPageModule),
   },
 ];
 
