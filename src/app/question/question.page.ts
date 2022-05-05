@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { componentOnReady } from '@ionic/core';
 import { QuestiongameService } from '../questiongame.service';
 
 @Component({
@@ -47,7 +46,6 @@ export class QuestionPage implements OnInit {
   }
 
   getFirstAndAllQuestionsApi() {
-    console.log(this.quantityQuestions);
     this.questiongameService
       .getQuestionsApi2(
         this.difficultyChoiced,
@@ -98,6 +96,7 @@ export class QuestionPage implements OnInit {
     this.badAnswers = this.wholeQuestion.incorrect_answers;
     this.responses.push(wholeQuestion.correct_answer);
     this.responses.sort((a, b) => 0.5 - Math.random());
+    //this.readQuestion();
   }
 
   deleteQuestion() {
@@ -113,4 +112,6 @@ export class QuestionPage implements OnInit {
   showNextQuestionResponse() {
     this.showNextQuestion = true;
   }
+
+  readQuestion() {}
 }

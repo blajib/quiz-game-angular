@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
 
 import { ToastController } from '@ionic/angular';
 import { QuestiongameService } from '../questiongame.service';
+import { StorageService } from '../storage.service';
 
 @Component({
   selector: 'app-home',
@@ -35,15 +37,27 @@ export class HomePage implements OnInit {
   constructor(
     public toastController: ToastController,
     private questiongameService: QuestiongameService,
-    private router: Router
+    private router: Router,
+    private storageService: StorageService
   ) {
     this.getCategories();
   }
-  ngOnInit(): void {}
+  async ngOnInit() {
+    this.storageService.init();
+    if (this.storageService.ifExist('isSaveInformations')) {
+      this.showSaveInformations();
+    }
+  }
 
   getStart() {
     this.errorMessage = '';
     if (this.checkStart()) {
+      if (this.isSavedInformations) {
+        this.saveInformations();
+      } else {
+        this.deleteInformations();
+      }
+
       this.router.navigate([
         '/question',
         this.pseudo,
@@ -89,5 +103,25 @@ export class HomePage implements OnInit {
 
   goToQuestion() {
     this.router.navigate(['/question']);
+  }
+
+  saveInformations() {
+    this.storageService.set('pseudo', this.pseudo);
+    this.storageService.set('category', this.categoryChoiced);
+    this.storageService.set('difficulty', this.difficultyChoiced);
+    this.storageService.set('isSaveInformations', true);
+  }
+
+  deleteInformations() {
+    this.storageService.remove('pseudo');
+    this.storageService.remove('category');
+    this.storageService.remove('difficulty');
+    this.storageService.remove('isSaveInformations');
+  }
+
+  async showSaveInformations() {
+    this.pseudo = await this.storageService.get('pseudo');
+    this.categoryChoiced = await this.storageService.get('category');
+    this.difficultyChoiced = await this.storageService.get('difficulty');
   }
 }
