@@ -1,14 +1,14 @@
 <app-header></app-header>
 
 <ion-content class="ion-padding">
-<p>Bienvenue {{pseudo}}</p>
+<p class="app-field">Bienvenue {{pseudo}}</p>
 <p>Question: {{compteurQuestion}}</p>
-<h3>{{question | titlecase}}</h3>
+<h3 [innerHtml]="question"></h3>
 
 <ion-radio-group [(ngModel)]="userAnswer">
   <ion-item *ngFor="let response of responses">
     <ion-label for="response">{{response}}</ion-label>
-    <ion-radio (click)="showNextQuestionResponse()" [value]="response"> {{response}}</ion-radio>
+    <ion-radio (click)="showNextQuestionResponse()" [value]="response" [innerHtml]="response"></ion-radio>
   </ion-item>
 </ion-radio-group>
 
