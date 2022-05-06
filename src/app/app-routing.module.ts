@@ -15,18 +15,27 @@ const routes: Routes = [
   {
     path: 'question/:pseudo/:difficulty/:category',
     loadChildren: () =>
-      import('./question-game/question/question.module').then((m) => m.QuestionPageModule),
+      import('./question-game/question/question.module').then(
+        (m) => m.QuestionPageModule
+      ),
   },
   {
     path: 'result/:compteurGoodAnswers/:nbrQuestions',
     loadChildren: () =>
-      import('./question-game/result/result.module').then((m) => m.ResultPageModule),
+      import('./question-game/result/result.module').then(
+        (m) => m.ResultPageModule
+      ),
+  },
+  {
+    path: 'sharing/home',
+    loadChildren: () =>
+      import('./sharing/home/home.module').then((m) => m.HomePageModule),
   },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
   exports: [RouterModule],
 })

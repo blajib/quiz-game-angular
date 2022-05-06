@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { QuestionPageRoutingModule } from './question-routing.module';
 
 import { QuestionPage } from './question.page';
-import { HeaderComponent } from '../../header/header.component';
+import { HeaderComponent } from '../../sharing/header/header.component';
 
 @NgModule({
   imports: [
